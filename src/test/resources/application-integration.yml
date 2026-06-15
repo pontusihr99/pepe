@@ -1,0 +1,30 @@
+spring:
+  config:
+    import: optional:sm://
+  cloud:
+    gcp:
+      project-id: ihr-trading-prod
+      secretmanager:
+        enabled: true
+  datasource:
+    url: jdbc:h2:mem:pepebot-integration;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+
+kraken:
+  api-key: ${sm://kraken-api-key}
+  secret-key: ${sm://kraken-secret-key}
+
+telegram:
+  bot-token: ${TELEGRAM_BOT_TOKEN:}
+  chat-id: ${TELEGRAM_CHAT_ID:}
+  enabled: ${TELEGRAM_ENABLED:true}
+
+logging:
+  level:
+    com.pepebot: DEBUG

@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: pepe-trading-bot
+  config:
+    import: optional:sm://
+  cloud:
+    gcp:
+      project-id: ihr-trading-prod
+      secretmanager:
+        enabled: true
+  datasource:
+    url: jdbc:h2:mem:pepebot;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  thymeleaf:
+    cache: false
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  level:
+    com.pepebot: INFO
+
+kraken:
+  base-url: https://api.kraken.com
+  default-pair: PEPEEUR
+  api-key: ${sm://kraken-api-key}
+  secret-key: ${sm://kraken-secret-key}
