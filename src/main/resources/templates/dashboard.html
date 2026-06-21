@@ -28,17 +28,17 @@
 	<div class="card">
 		<h2>Price</h2>
 		<p th:if="${price.message}" th:text="${price.message}"></p>
-		<p><strong th:text="${price.symbol()}">PEPEEUR</strong></p>
-		<p th:text="${price.price()}">0.00000000</p>
-		<p th:text="${price.updatedAt()}">timestamp</p>
+		<p><strong th:text="${price.symbol}">PEPEEUR</strong></p>
+		<p th:text="${price.price}">0.00000000</p>
+		<p th:text="${price.updatedAt}">timestamp</p>
 	</div>
 	<div class="card">
 		<h2>Balance</h2>
 		<p th:if="${balance.message}" th:text="${balance.message}"></p>
-		<div th:each="asset : ${balance.assets()}">
-			<p><strong th:text="${asset.asset()}">USD</strong>:
-				<span th:text="${asset.free()}">0</span> free,
-				<span th:text="${asset.locked()}">0</span> locked
+		<div th:each="asset : ${balance.assets}">
+			<p><strong th:text="${asset.asset}">USD</strong>:
+				<span th:text="${asset.free}">0</span> free,
+				<span th:text="${asset.locked}">0</span> locked
 			</p>
 		</div>
 	</div>
